@@ -16,6 +16,9 @@ class Program
         // ModifyOrder
         orderManagement.ModifyOrder(1, "Gaming Laptop", 1);
 
+        // ViewOrderHistory again to see the changes
+        orderManagement.ViewOrderHistory();
+
         // RemoveOrder
         orderManagement.RemoveOrder(2);
 

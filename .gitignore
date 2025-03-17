@@ -116,3 +116,5 @@
 /order-management-waterfall/obj/order-management-waterfall.csproj.nuget.g.targets
 /order-management-waterfall/obj/project.assets.json
 /order-management-waterfall/obj/project.nuget.cache
+/obj/project.assets.json
+/obj/project.nuget.cache

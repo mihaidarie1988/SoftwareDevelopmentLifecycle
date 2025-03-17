@@ -22,20 +22,4 @@ internal class OrderManagement
             Console.WriteLine($"OrderId: {order.OrderId}, Item: {order.Item}, Quantity: {order.Quantity}");
         }
     }
-
-    public void ModifyOrder(int orderId, string newItem, int newQuantity)
-    {
-        RemoveOrder(orderId);
-
-        PlaceOrder(orderId, newItem, newQuantity);
-
-        Console.WriteLine("Order modified successfully.");
-    }
-
-    public void RemoveOrder(int orderId)
-    {
-        orderHistory.RemoveOrder(orderId);
-
-        Console.WriteLine("Order removed successfully.");
-    }
 }

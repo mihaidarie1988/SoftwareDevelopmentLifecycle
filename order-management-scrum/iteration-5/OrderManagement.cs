@@ -13,16 +13,6 @@ internal class OrderManagement
         Console.WriteLine("Order placed successfully.");
     }
 
-    public void ViewOrderHistory()
-    {
-        List<Order> orders = orderHistory.GetOrderHistory();
-
-        foreach (var order in orders)
-        {
-            Console.WriteLine($"OrderId: {order.OrderId}, Item: {order.Item}, Quantity: {order.Quantity}");
-        }
-    }
-
     public void ModifyOrder(int orderId, string newItem, int newQuantity)
     {
         RemoveOrder(orderId);

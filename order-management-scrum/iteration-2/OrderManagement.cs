@@ -13,7 +13,7 @@ internal class OrderManagement
         Console.WriteLine("Order placed successfully.");
     }
 
-    public void ViewOrderHistory()
+    public List<Order> ViewOrderHistory()
     {
         List<Order> orders = orderHistory.GetOrderHistory();
 
@@ -21,5 +21,7 @@ internal class OrderManagement
         {
             Console.WriteLine($"OrderId: {order.OrderId}, Item: {order.Item}, Quantity: {order.Quantity}");
         }
+
+        return orders;
     }
 }

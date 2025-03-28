@@ -25,5 +25,22 @@ public class OrderManagementTests
         Assert.AreEqual(expectedMessage, sw.ToString());
     }
 
+    [TestMethod]
+    public void RemoveOrder_OrderExists_OrderRemovedSuccessfully()
+    {
+        // Arrange
+        var orderManagement = new OrderManagement();
+        int orderId = 1;
+        string item = "TestItem";
+        int quantity = 10;
 
+        orderManagement.PlaceOrder(orderId, item, quantity);
+
+        // Act
+        orderManagement.RemoveOrder(orderId);
+        var orders = orderManagement.ViewOrderHistory();
+
+        // Assert
+        Assert.IsFalse(orders.Any(o => o.OrderId == orderId), "Order was not removed successfully.");
+    }
 }

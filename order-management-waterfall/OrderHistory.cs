@@ -1,4 +1,4 @@
-﻿namespace order_management_waterfall;
+﻿namespace order_management_scrum;
 
 internal class OrderHistory
 {

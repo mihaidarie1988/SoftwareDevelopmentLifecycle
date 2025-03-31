@@ -26,6 +26,42 @@ public class OrderManagementTests
     }
 
     [TestMethod]
+    public void ModifyOrder_OrderExists_OrderModifiedSuccessfully()
+    {
+        // Arrange
+        var orderManagement = new OrderManagement();
+        orderManagement.PlaceOrder(1, "Item1", 10);
+
+        // Act
+        orderManagement.ModifyOrder(1, "NewItem", 20);
+
+        // Assert
+        var orders = orderManagement.ViewOrderHistory();
+        var modifiedOrder = orders.Find(o => o.OrderId == 1);
+        Assert.IsNotNull(modifiedOrder);
+        Assert.AreEqual("NewItem", modifiedOrder.Item);
+        Assert.AreEqual(20, modifiedOrder.Quantity);
+    }
+
+    [TestMethod]
+    public void ModifyOrder_OrderDoesNotExist_OrderNotFound()
+    {
+        // Arrange
+        var orderManagement = new OrderManagement();
+
+        // Act
+        using (var sw = new StringWriter())
+        {
+            Console.SetOut(sw);
+            orderManagement.ModifyOrder(1, "NewItem", 20);
+
+            // Assert
+            var result = sw.ToString().Trim();
+            Assert.AreEqual("Order not found.", result);
+        }
+    }
+
+    [TestMethod]
     public void RemoveOrder_OrderExists_OrderRemovedSuccessfully()
     {
         // Arrange

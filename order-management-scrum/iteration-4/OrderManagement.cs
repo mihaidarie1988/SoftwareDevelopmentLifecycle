@@ -27,11 +27,19 @@ internal class OrderManagement
 
     public void ModifyOrder(int orderId, string newItem, int newQuantity)
     {
-        RemoveOrder(orderId);
+        List<Order> orders = orderHistory.GetOrderHistory();
+        Order order = orders.FirstOrDefault(o => o.OrderId == orderId);
 
-        PlaceOrder(orderId, newItem, newQuantity);
-
-        Console.WriteLine("Order modified successfully.");
+        if (order != null)
+        {
+            order.Item = newItem;
+            order.Quantity = newQuantity;
+            Console.WriteLine("Order modified successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Order not found.");
+        }
     }
 
     public void RemoveOrder(int orderId)
